@@ -77,7 +77,7 @@ class CNN(Model):
         self.h_pool = lambda x: self.horizontal_pooling(x)
         self.v_pool = lambda x: self.vertical_pooling(x)
 
-        self.att = nn.Parameter(torch.from_numpy(np.random.normal(size=(emb_dim,emb_dim))).type(torch.FloatTensor),requires_grad=True)
+        self.att = AttentionMatrix(params['qcnn']['conv_size'])
 
         self.embs.weight.data.copy_(torch.from_numpy(vocab.weights))
         if 'static_emb' in params and params['static_emb']:
