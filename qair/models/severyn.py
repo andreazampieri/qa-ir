@@ -4,6 +4,7 @@ import torch.nn as nn
 from qair.models import Model
 from qair.models.layers import KimConv, activations
 
+
 torch.backends.cudnn.deterministic = True
 
 @Model.register('cnn')
@@ -31,7 +32,7 @@ class CNN(Model):
                             activation=activations[params['acnn']['activation']])
 
         self.mlp = nn.Sequential(
-            nn.Linear(params['qcnn']['conv_size']+params['acnn']['conv_size'], params['hidden_size']),
+            nn.Linear(params['qcnn']['conv_size']*len(params['qcnn']['windows'])+params['acnn']['conv_size']*len(params['acnn']['windows']), params['hidden_size']),
             nn.Tanh(),
             nn.Linear(params['hidden_size'], 1),
         )
