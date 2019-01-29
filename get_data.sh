@@ -7,4 +7,4 @@ mkdir data/raw/wikiqa
 mv original_data/WikiQA-dev.tsv data/raw/wikiqa/
 mv original_data/WikiQA-train.tsv data/raw/wikiqa/
 mv original_data/WikiQA-test.tsv data/raw/wikiqa/
-gzip -d data/raw/trecqa/jacana-qa-naacl2013-data-results/train2393.cleanup.xml.gz
+gzip -d data/raw/trecqa/train2393.cleanup.xml.gz
