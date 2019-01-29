@@ -107,8 +107,8 @@ class AttCNN(Model):
 
         q_att = f.softmax(self.h_pool(mat),dim=1)
         a_att = f.softmax(self.v_pool(mat),dim=1)
-        q = self.flatten(torch.matmul(qemb,q_att))
-        a = self.flatten(torch.matmul(aemb,a_att))
+        q = self.flatten(torch.bmm(qemb,q_att))
+        a = self.flatten(torch.bmm(aemb,a_att))
 
         return f.cosine_similarity(q,a)
 

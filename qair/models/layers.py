@@ -34,7 +34,7 @@ class AttentionMatrix(nn.Module):
     
     def forward(self,q,a):
         qt = q.transpose(1,2)
-        out = torch.matmul(torch.matmul(qt,self.u),a) # Qt*U*A
+        out = torch.bmm(torch.bmm(qt,self.u),a) # Qt*U*A
         return torch.tanh(out)
 
 class SimpleConv(nn.Module):
