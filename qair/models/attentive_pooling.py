@@ -35,11 +35,6 @@ class CNN(Model):
         if 'static_emb' in params and params['static_emb']:
             self.embs.weight.requires_grad = False
 
-    def horizontal_pooling(self,t):
-        t = t.unsqueeze(1)
-        out = f.max_pool1d(t,t.size(-1)).view(t.size(0),-1)
-        return out.squeeze(1)
-
     def forward(self, inp):
         (q, a) = inp
         # Map ids to word embeddings
@@ -51,11 +46,7 @@ class CNN(Model):
         qemb = self.conv_q(q)
         aemb = self.conv_a(a)
 
-        qout = self.horizontal_pooling(qemb)
-        aout = self.horizontal_pooling(aemb)
-        print(qout.shape,aout.shape)
-
-       	out = f.cosine_similarity(qout,aout)
+       	out = f.cosine_similarity(qemb,aemb)
 
         return out
 
