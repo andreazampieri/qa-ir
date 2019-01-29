@@ -51,7 +51,7 @@ class CNN(Model):
         return out
 
 @Model.register('att-cnn')
-class CNN(Model):
+class AttCNN(Model):
 
     def __init__(self, params, vocab, device='cpu'):
         super().__init__()
@@ -88,6 +88,9 @@ class CNN(Model):
 
     def vertical_pooling(self,x):
         return self.horizontal_pooling(x.transpose(1,2)) 
+
+    def flatten(self,x):
+        return x.view(x.size(0),-1)
 
     def forward(self, inp):
         (q, a) = inp
