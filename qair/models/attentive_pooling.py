@@ -13,7 +13,7 @@ class CNN(Model):
 	def __init__(self, params, vocab, device='cpu'):
         super().__init__()
         self.vocab = vocab
-        
+
         self.device = torch.device(device)
         params['emb_num'], params['emb_dim'] = vocab.shape
 
@@ -35,8 +35,8 @@ class CNN(Model):
         if 'static_emb' in params and params['static_emb']:
             self.embs.weight.requires_grad = False
 
-	def horizontal_pooling(self,t):
-		return f.max_pool1d(t,t.size(2)).view(t.size(0),-1)
+    def horizontal_pooling(self,t):
+        return f.max_pool1d(t,t.size(2)).view(t.size(0),-1)
 
     def forward(self, inp):
         (q, a) = inp
