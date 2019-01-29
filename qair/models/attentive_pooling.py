@@ -13,7 +13,7 @@ class CNN(Model):
 	def __init__(self, params, vocab, device='cpu'):
         super().__init__()
         self.vocab = vocab
-
+        
         self.device = torch.device(device)
         params['emb_num'], params['emb_dim'] = vocab.shape
 
