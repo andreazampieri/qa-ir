@@ -15,4 +15,6 @@ import qair.models.trainers
 # Import Parsers
 import qair.models.parsers
 
+import qair.models.attentive_pooling
+
 
