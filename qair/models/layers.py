@@ -5,6 +5,7 @@ from torch import nn
 activations = {
     'relu':torch.relu,
     'tanh':torch.tanh
+    'sigmoid':torch.sigmoid
 }
 
 def attention(q, a, mask_q=None, mask_a=None):
