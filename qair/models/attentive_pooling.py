@@ -104,7 +104,6 @@ class AttCNN(Model):
         aemb = self.conv_a(a)
 
         mat = self.att(qemb,aemb)
-        mat = mat.transpose(0,1)
 
         q_att = f.softmax(self.h_pool(mat),dim=1)
         a_att = f.softmax(self.v_pool(mat),dim=1)
