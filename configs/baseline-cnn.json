@@ -5,7 +5,7 @@
     "model":{
         "name":"cnn",
         "params":{
-            "static_emb": true,
+            "static_emb": false,
             "hidden_size":300,
             "pad_idx":0,
             "qcnn":{
