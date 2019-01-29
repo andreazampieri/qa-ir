@@ -37,7 +37,7 @@ class CNN(Model):
 
     def horizontal_pooling(self,t):
         print(t.shape)
-        return f.max_pool1d(t,t.size(2)).view(t.size(0),-1)
+        return f.max_pool1d(t,t.size(-1)).view(t.size(0),-1)
 
     def forward(self, inp):
         (q, a) = inp
