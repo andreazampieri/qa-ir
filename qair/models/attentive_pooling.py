@@ -7,7 +7,7 @@ from qair.models.layers import KimConv, activations
 
 torch.backends.cudnn.deterministic = True
 
-@Model.register('base-cnn')
+@Model.register('basecnn')
 class CNN(Model):
 	 def __init__(self, params, vocab, device='cpu'):
         super().__init__()
