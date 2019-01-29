@@ -1,11 +1,11 @@
 {
     "embeddings":"glove",
-    "train_as":"ranker",
+    "train_as":"classifier",
     "parser":"text",
     "model":{
         "name":"cnn",
         "params":{
-            "static_emb": false,
+            "static_emb": true,
             "hidden_size":300,
             "pad_idx":0,
             "qcnn":{
