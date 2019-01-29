@@ -74,8 +74,7 @@ class AttCNN(Model):
                                  params['acnn']['window'],
                                  activation=activations[params['acnn']['activation']])
 
-        self.h_pool = lambda x: self.horidef flatten(self,x):
-    return x.view(x.size(0),-1)zontal_pooling(x)
+        self.h_pool = lambda x: self.horizontal_pooling(x)
         self.v_pool = lambda x: self.vertical_pooling(x)
 
         self.att = AttentionMatrix(params['qcnn']['conv_size'])
