@@ -36,8 +36,9 @@ class CNN(Model):
             self.embs.weight.requires_grad = False
 
     def horizontal_pooling(self,t):
-        print(t.shape)
-        return f.max_pool1d(t,t.size(-1)).view(t.size(0),-1)
+        t = t.unsqueeze(1)
+        out = f.max_pool1d(t,t.size(-1)).view(t.size(0),-1)
+        return out.squeeze(1)
 
     def forward(self, inp):
         (q, a) = inp
