@@ -6,15 +6,15 @@
         "name":"cnn",
         "params":{
             "static_emb": true,
-            "hidden_size":300,
+            "hidden_size": 300,
             "pad_idx":0,
             "qcnn":{
-                "conv_size":100,
+                "conv_size": 500,
                 "windows":[5],
                 "activation":"relu"
             },
             "acnn":{
-                "conv_size":100,
+                "conv_size": 500,
                 "windows":[5],
                 "activation":"relu"
             }
@@ -23,7 +23,7 @@
     },
     "seed": 123,
     "patience": 5,
-    "batch_size": 15,
+    "batch_size": 50,
     "optimizer":{
         "name":"Adam",
         "params":{
