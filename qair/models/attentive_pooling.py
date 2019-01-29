@@ -71,7 +71,7 @@ class CNN(Model):
 
         self.conv_a = SimpleConv(params['emb_dim'],
                                  params['acnn']['conv_size'],
-                                 params['acnn']['windows'],
+                                 params['acnn']['window'],
                                  activation=activations[params['acnn']['activation']])
 
         self.h_pool = lambda x: self.horizontal_pooling(x)
