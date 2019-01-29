@@ -25,6 +25,31 @@ def attention(q, a, mask_q=None, mask_a=None):
 
     return q_att, a_att
 
+class AttentionMatrix(nn.Module):
+  
+    def __init__(self,emb_dim):
+        super(AttentionMatrix,self).__init__()
+        self.u = nn.Parameter(torch.from_numpy(np.random.normal(size=(emb_dim,emb_dim))).type(torch.FloatTensor),requires_grad=True)
+    
+    def forward(self,q,a):
+        qt = q.transpose(1,2)
+        out = torch.matmul(torch.matmul(qt,self.u),a) # Qt*U*A
+        return torch.tanh(out)
+
+class SimpleConv(nn.Module):
+
+    def __init__(self,emb_dim,hidden_dim,ctx_window,activation=torch.relu):
+        super(SimpleConv,self).__init__()
+        self.conv = nn.Conv2d(1,hidden_dim,kernel_size=(ctx_window,emb_dim))
+        odd_adjustment = 1 if ctx_window%2==0 else 0
+        self.pad = nn.ZeroPad2d((0,0,ctx_window-1-odd_adjustment,ctx_window-1))
+        self.activation = activation
+    
+    def forward(self,x_emb):
+        x_emb = x_emb.unsqueeze(1) #adding a dimension (the channel for the convolution)   
+        #return f.relu(self.conv(self.pad(x_emb))).squeeze(dim=3) # remove the single channel extra dimension
+        return self.activation(self.conv(self.pad(x_emb)).squeeze(dim=3))
+
 
 def sigmoid_attention(q, a, mask_q=None, mask_a=None):
     dot_qa = torch.bmm(q, a.transpose(1, 2))

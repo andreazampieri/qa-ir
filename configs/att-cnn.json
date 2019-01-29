@@ -1,0 +1,33 @@
+{
+    "embeddings":"glove",
+    "train_as":"classifier",
+    "parser":"text",
+    "model":{
+        "name":"att-cnn",
+        "params":{
+            "static_emb": true,
+            "hidden_size": 300,
+            "pad_idx":0,
+            "qcnn":{
+                "conv_size": 400,
+                "window":3,
+                "activation":"sigmoid"
+            },
+            "acnn":{
+                "conv_size": 400,
+                "window":3,
+                "activation":"sigmoid"
+            }
+        }
+
+    },
+    "seed": 123,
+    "patience": 5,
+    "batch_size": 50,
+    "optimizer":{
+        "name":"Adam",
+        "params":{
+            "lr":0.002
+        }
+    }
+}
