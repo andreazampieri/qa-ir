@@ -22,7 +22,7 @@
 
     },
     "seed": 123,
-    "patience": 5,
+    "patience": 10,
     "batch_size": 50,
     "optimizer":{
         "name":"Adam",
