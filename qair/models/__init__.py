@@ -1,6 +1,3 @@
-
-# TODO: refactor evaluation
-
 import logging
 
 # Import skeletons
@@ -16,5 +13,3 @@ import qair.models.trainers
 import qair.models.parsers
 
 import qair.models.attentive_pooling
-
-

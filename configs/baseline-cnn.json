@@ -3,7 +3,7 @@
     "train_as":"classifier",
     "parser":"text",
     "model":{
-        "name":"basecnn",
+        "name":"base-cnn",
         "params":{
             "static_emb": true,
             "hidden_size": 300,
