@@ -10,7 +10,7 @@ torch.backends.cudnn.deterministic = True
 @Model.register('base-cnn')
 class CNN(Model):
 
-	def __init__(self, params, vocab, device='cpu'):
+    def __init__(self, params, vocab, device='cpu'):
         super().__init__()
         self.vocab = vocab
 
