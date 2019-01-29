@@ -9,13 +9,13 @@
             "hidden_size":300,
             "pad_idx":0,
             "qcnn":{
-                "conv_size":400,
-                "windows":[4],
+                "conv_size":100,
+                "windows":[5],
                 "activation":"relu"
             },
             "acnn":{
-                "conv_size":400,
-                "windows":[4],
+                "conv_size":100,
+                "windows":[5],
                 "activation":"relu"
             }
         }
