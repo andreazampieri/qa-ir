@@ -4,7 +4,7 @@ from torch import nn
 
 activations = {
     'relu':torch.relu,
-    'tanh':torch.tanh
+    'tanh':torch.tanh,
     'sigmoid':torch.sigmoid
 }
 
