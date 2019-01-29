@@ -53,6 +53,7 @@ class CNN(Model):
 
         qout = self.horizontal_pooling(qemb)
         aout = self.horizontal_pooling(aemb)
+        print(qout.shape,aout.shape)
 
        	out = f.cosine_similarity(qout,aout)
 
