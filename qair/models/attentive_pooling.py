@@ -74,7 +74,8 @@ class AttCNN(Model):
                                  params['acnn']['window'],
                                  activation=activations[params['acnn']['activation']])
 
-        self.h_pool = lambda x: self.horizontal_pooling(x)
+        self.h_pool = lambda x: self.horidef flatten(self,x):
+    return x.view(x.size(0),-1)zontal_pooling(x)
         self.v_pool = lambda x: self.vertical_pooling(x)
 
         self.att = AttentionMatrix(params['qcnn']['conv_size'])
@@ -107,8 +108,8 @@ class AttCNN(Model):
 
         q_att = f.softmax(self.h_pool(mat),dim=1)
         a_att = f.softmax(self.v_pool(mat),dim=1)
-        q = self.flatten(torch.matmul(q_enc,q_att))
-        a = self.flatten(torch.matmul(a_enc,a_att))
+        q = self.flatten(torch.matmul(qemb,q_att))
+        a = self.flatten(torch.matmul(aemb,a_att))
 
         return f.cosine_similarity(q,a)
 
