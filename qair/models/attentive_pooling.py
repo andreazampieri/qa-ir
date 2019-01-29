@@ -64,11 +64,6 @@ class CNN(Model):
                                  params['emb_dim'],
                                  vocab['PAD'])
 
-        self.conv_q = KimConv(params['emb_dim'],
-                              params['qcnn']['conv_size'],
-                              windows=params['qcnn']['windows'],
-                              activation=activations[params['qcnn']['activation']])
-
         self.conv_q = SimpleConv(params['emb_dim'],
                                  params['qcnn']['conv_size'],
                                  params['qcnn']['window'],
