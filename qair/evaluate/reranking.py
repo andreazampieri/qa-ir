@@ -31,7 +31,7 @@ def filter_dataset(dictionary, mode):
         filtered[qid] = sort(candidates)
     return filtered
 
-def MAP(dataset, fltr='all_same'):
+def MAP(dataset, fltr='all_neg'):
     dictionary = filter_dataset(dataset.q2e, mode=fltr)
     average_precisions = []
     for _, candidates in dictionary.items():
@@ -46,7 +46,7 @@ def MAP(dataset, fltr='all_same'):
     return np.mean(average_precisions)
 
 
-def MRR(dataset, fltr='all_same'):
+def MRR(dataset, fltr='all_neg'):
     dictionary = filter_dataset(dataset.q2e, mode=fltr)
     reciprocal_ranks = []
     for _, candidates in dictionary.items():
@@ -61,7 +61,7 @@ def MRR(dataset, fltr='all_same'):
             reciprocal_ranks.append(0.)
     return np.mean(reciprocal_ranks)
 
-def P_at_n(dataset, n=1, fltr='all_same'):
+def P_at_n(dataset, n=1, fltr='all_neg'):
     dictionary = filter_dataset(dataset.q2e, mode=fltr)
     hits_at_n = []
     for _, candidates in dictionary.items():
@@ -143,7 +143,7 @@ def at_f1(dataset, th=0.5, mode='empty'):
     return 2*p*r/(p+r+1e-13)
 
 
-def evaluate(dataset, th=0.5, mode='all_same'):
+def evaluate(dataset, th=0.5, mode='all_neg'):
     metrics = {
         "P@1": P_at_n(dataset, 1, mode),
         "MAP": MAP(dataset, mode),
