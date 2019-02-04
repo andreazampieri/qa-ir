@@ -1,6 +1,6 @@
 {
     "embeddings":"glove",
-    "train_as":"classifier",
+    "train_as":"ranker",
     "parser":"text",
     "model":{
         "name":"cnn",
