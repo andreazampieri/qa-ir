@@ -25,9 +25,9 @@
     "patience": 20,
     "batch_size": 50,
     "optimizer":{
-        "name":"Adam",
+        "name":"Adagrad",
         "params":{
-            "lr": 0.04
+            "lr": 0.01
         }
     }
 }
