@@ -185,7 +185,7 @@ class AP_CNN(Model):
         a = self.flatten(torch.matmul(a_enc,a_att))
         #return f.cosine_similarity(q,a)
 
-        out = self.dense(torch.cat(q,a),-1)
+        out = self.dense(torch.cat([q,a]),-1)
         return out
       
     def horizontal_pooling(self,x):
