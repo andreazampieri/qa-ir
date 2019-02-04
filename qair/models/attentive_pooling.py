@@ -169,8 +169,8 @@ class AP_CNN(Model):
     
     def forward(self,inp):
         q,a = inp
-        q_emb = self.emb(q)
-        a_emb = self.emb(a)
+        q_emb = self.embs(q)
+        a_emb = self.embs(a)
         q_enc = self.convolution(q_emb)
         a_enc = self.convolution(a_emb)
         mat = self.attention_mat(q_enc,a_enc) # check dimensions
