@@ -167,7 +167,8 @@ class AP_CNN(Model):
     def flatten(self,x):
       return x.view(x.size(0),-1)
     
-    def forward(self,q,a):
+    def forward(self,inp):
+        q,a = inp
         q_emb = self.emb(q)
         a_emb = self.emb(a)
         q_enc = self.convolution(q_emb)
