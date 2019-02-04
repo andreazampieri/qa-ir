@@ -27,7 +27,7 @@
     "optimizer":{
         "name":"Adadelta",
         "params":{
-            "lr":0.1
+            "lr":0.8
         }
     }
 }
