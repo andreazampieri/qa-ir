@@ -9,12 +9,12 @@
             "hidden_size":100,
             "pad_idx":0,
             "qcnn":{
-                "conv_size":130,
+                "conv_size":100,
                 "windows":[5],
                 "activation":"relu"
             },
             "acnn":{
-                "conv_size":130,
+                "conv_size":100,
                 "windows":[5],
                 "activation":"relu"
             }
@@ -25,9 +25,9 @@
     "patience": 25,
     "batch_size": 50,
     "optimizer":{
-        "name":"Adam",
+        "name":"Adadelta",
         "params":{
-            "lr":0.001
+            "lr":0.1
         }
     }
 }
