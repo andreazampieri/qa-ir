@@ -10,12 +10,12 @@
             "pad_idx":0,
             "qcnn":{
                 "conv_size":100,
-                "windows":[3],
+                "windows":[5],
                 "activation":"relu"
             },
             "acnn":{
                 "conv_size":100,
-                "windows":[3],
+                "windows":[5],
                 "activation":"relu"
             }
         }
