@@ -114,6 +114,9 @@ class AttCNN(Model):
         return f.cosine_similarity(q,a)
 
 # ---------------------------------------
+
+import numpy as np
+
 class AttentionMatrix(nn.Module):
   
     def __init__(self,emb_dim):
