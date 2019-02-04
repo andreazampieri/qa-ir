@@ -11,12 +11,12 @@
             "qcnn":{
                 "conv_size":400,
                 "windows":[5],
-                "activation":"sigmoid"
+                "activation":"relu"
             },
             "acnn":{
                 "conv_size":400,
                 "windows":[5],
-                "activation":"sigmoid"
+                "activation":"relu"
             }
         }
 
