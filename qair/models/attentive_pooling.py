@@ -163,6 +163,11 @@ class AP_CNN(Model):
         self.attention_mat = AttentionMatrix(params['qcnn']['conv_size'])
         self.h_pool = lambda t : self.horizontal_pooling(t)
         self.v_pool = lambda t : self.vertical_pooling(t)
+        self.dense = nn.Sequential(
+            nn.Linear(2*params['qcnn']['conv_size'], params['hidden_size']),
+            nn.Tanh(),
+            nn.Linear(params['hidden_size'], 1),
+        )
     
     def flatten(self,x):
       return x.view(x.size(0),-1)
@@ -178,7 +183,10 @@ class AP_CNN(Model):
         a_att = f.softmax(self.v_pool(mat),dim=1)
         q = self.flatten(torch.matmul(q_enc,q_att))
         a = self.flatten(torch.matmul(a_enc,a_att))
-        return f.cosine_similarity(q,a)
+        #return f.cosine_similarity(q,a)
+
+        out = self.dense(torch.cat(q,a),-1)
+        return out
       
     def horizontal_pooling(self,x):
         return f.max_pool1d(x,x.size(2))
