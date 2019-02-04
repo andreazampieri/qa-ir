@@ -3,31 +3,31 @@
     "train_as":"classifier",
     "parser":"text",
     "model":{
-        "name":"att-cnn",
+        "name":"base-cnn",
         "params":{
             "static_emb": true,
-            "hidden_size": 300,
+            "hidden_size": 100,
             "pad_idx":0,
             "qcnn":{
-                "conv_size": 400,
+                "conv_size": 100,
                 "window":3,
-                "activation":"sigmoid"
+                "activation":"relu"
             },
             "acnn":{
-                "conv_size": 400,
+                "conv_size": 100,
                 "window":3,
-                "activation":"sigmoid"
+                "activation":"relu"
             }
         }
 
     },
     "seed": 123,
-    "patience": 5,
+    "patience": 20,
     "batch_size": 50,
     "optimizer":{
-        "name":"Adam",
+        "name":"Adadelta",
         "params":{
-            "lr":0.002
+            "lr": 0.8
         }
     }
 }
