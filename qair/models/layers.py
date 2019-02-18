@@ -39,9 +39,9 @@ class AttentionMatrix(nn.Module):
 
 class SimpleConv(nn.Module):
 
-    def __init__(self,emb_dim,hidden_dim,ctx_window,channels=1,activation=torch.relu):
+    def __init__(self,emb_dim,hidden_dim,ctx_window,activation=torch.relu):
         super(SimpleConv,self).__init__()
-        self.conv = nn.Conv2d(channels,hidden_dim,kernel_size=(ctx_window,emb_dim))
+        self.conv = nn.Conv2d(1,hidden_dim,kernel_size=(ctx_window,emb_dim))
         odd_adjustment = 1 if ctx_window%2==0 else 0
         self.pad = nn.ZeroPad2d((0,0,ctx_window-1-odd_adjustment,ctx_window-1))
         self.activation = activation
@@ -50,6 +50,7 @@ class SimpleConv(nn.Module):
         x_emb = x_emb.unsqueeze(1) #adding a dimension (the channel for the convolution)   
         #return f.relu(self.conv(self.pad(x_emb))).squeeze(dim=3) # remove the single channel extra dimension
         return self.activation(self.conv(self.pad(x_emb)).squeeze(dim=3))
+
 
 
 def sigmoid_attention(q, a, mask_q=None, mask_a=None):
