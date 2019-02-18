@@ -14,7 +14,7 @@
                 "activation":"tanh"
             },
             "cnn2":{
-                "conv_size":50,
+                "conv_size":1,
                 "window": 5,
                 "activation":"tanh"
             }
