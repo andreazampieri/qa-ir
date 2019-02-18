@@ -197,7 +197,7 @@ class AP_CNN(Model):
 @Model.register("deep-cnn")
 class DeepCNN(Model):
 
-    def __init__(self,params,vocab,device="gpu"):
+    def __init__(self,params,vocab,device="cpu"):
         super().__init__()
         self.vocab = vocab
 
