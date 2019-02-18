@@ -159,7 +159,7 @@ class AP_CNN(Model):
                                  vocab['PAD'])
         #self.convolution_q = ConvolutionModule(emb_dim,dict_size,hidden_dim,ctx_window)
         #self.convolution_a = ConvolutionModule(emb_dim,dict_size,hidden_dim,ctx_window)
-        self.convolution = ConvolutionModule(params['emb_dim'],params['qcnn']['conv_size'],params['qcnn']['window'])
+        self.convolution = SimpleConv(params['emb_dim'],params['qcnn']['conv_size'],params['qcnn']['window'])
         self.attention_mat = AttentionMatrix(params['qcnn']['conv_size'])
         self.h_pool = lambda t : self.horizontal_pooling(t)
         self.v_pool = lambda t : self.vertical_pooling(t)
@@ -193,3 +193,51 @@ class AP_CNN(Model):
   
     def vertical_pooling(self,x):
         return self.horizontal_pooling(x.transpose(1,2)) 
+
+@Model.register("deep-cnn")
+class DeepCNN(Model):
+
+    def __init__(self,params,vocab,device="gpu"):
+        super().__init__()
+        self.vocab = vocab
+
+        self.device = torch.device(device)
+        params['emb_num'], params['emb_dim'] = vocab.shape
+
+        self.embs = nn.Embedding(params['emb_num'],
+                                 params['emb_dim'],
+                                 vocab['PAD'])
+
+        self.conv_1 = SimpleConv(params['emb_dim'],
+                                 params['cnn1']['conv_size'],
+                                 params['cnn1']['window'],
+                                 activation=activations[params['cnn1']['activation']])
+
+        self.conv_2 = SimpleConv(params['emb_dim'],
+                                 params['cnn2']['conv_size'],
+                                 params['cnn2']['window'],
+                                 activation=activations[params['cnn2']['activation']])
+
+        self.pool = lambda t: horizontal_pooling(self,t)
+
+
+    def forward(self,inp):
+        q,a = inp
+
+        q = self.embs(q)
+        a = self.embs(a)
+
+        qemb = self.conv_1(q)
+        aemb = self.conv_1(a)
+
+        qemb = self.conv_2(qemb)
+        aemb = self.conv_2(aemb)
+
+        qemb = self.pool(qemb)
+        aemb = self.pool(aemb)
+
+        out = f.cosine_similarity(qemb,aemb)
+        return out
+
+    def horizontal_pooling(self,t):
+        return f.max_pool1d(t,t.size(2)).view(t.size(0),-1)
