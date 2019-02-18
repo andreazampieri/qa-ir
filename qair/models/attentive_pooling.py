@@ -230,8 +230,8 @@ class DeepCNN(Model):
 
         conv_2_filters = params['cnn2']['conv_size']
         conv_2_window = params['cnn2']['conv_size']
-        # self.conv_2 = Conv2d(conv_1_filters,conv_2_filters,
-        #                     kernel_size=(conv_2_window,emb_dim))
+        self.conv_2 = Conv2d(conv_1_filters,conv_2_filters,
+                            kernel_size=(conv_2_window,1))
 
         self.pool = lambda t: self.horizontal_pooling(t)
 
@@ -249,9 +249,9 @@ class DeepCNN(Model):
 
         print(qemb.shape)
         print(aemb.shape)
-        1/0
-        # qemb = self.conv_2(qemb)
-        # aemb = self.conv_2(aemb)
+
+        qemb = self.conv_2(qemb)
+        aemb = self.conv_2(aemb)
 
         qemb = self.pool(qemb)
         aemb = self.pool(aemb)
