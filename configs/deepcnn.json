@@ -1,0 +1,33 @@
+{
+    "embeddings":"glove",
+    "train_as":"classifier",
+    "parser":"text",
+    "model":{
+        "name":"deepcnn",
+        "params":{
+            "static_emb": true,
+            "hidden_size":100,
+            "pad_idx":0,
+            "cnn1":{
+                "conv_size":100,
+                "window": 5,
+                "activation":"tanh"
+            },
+            "cnn2":{
+                "conv_size":100,
+                "window": 5,
+                "activation":"tanh"
+            }
+        }
+
+    },
+    "seed": 123,
+    "patience": 20,
+    "batch_size": 50,
+    "optimizer":{
+        "name":"Adadelta",
+        "params":{
+            "lr": 0.8
+        }
+    }
+}
