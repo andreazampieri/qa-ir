@@ -9,20 +9,20 @@
             "hidden_size": 300,
             "pad_idx":0,
             "qcnn":{
-                "conv_size": 4000,
+                "conv_size": 700,
                 "window":[5],
-                "activation":"sigmoid"
+                "activation":"relu"
             },
             "acnn":{
-                "conv_size": 4000,
+                "conv_size": 700,
                 "window":[5],
-                "activation":"sigmoid"
+                "activation":"relu"
             }
         }
 
     },
     "seed": 123,
-    "patience": 10,
+    "patience": 8,
     "batch_size": 50,
     "optimizer":{
         "name":"Adam",
