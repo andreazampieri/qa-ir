@@ -10,12 +10,12 @@
             "pad_idx":0,
             "qcnn":{
                 "conv_size": 4000,
-                "windows":[5],
+                "window":[5],
                 "activation":"sigmoid"
             },
             "acnn":{
                 "conv_size": 4000,
-                "windows":[5],
+                "window":[5],
                 "activation":"sigmoid"
             }
         }
