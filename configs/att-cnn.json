@@ -22,7 +22,7 @@
 
     },
     "seed": 123,
-    "patience": 20,
+    "patience": 7,
     "batch_size": 50,
     "optimizer":{
         "name":"Adagrad",
