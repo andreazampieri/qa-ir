@@ -23,7 +23,7 @@ class CNN(Model):
 
         self.conv_q = KimConv(params['emb_dim'],
                               params['qcnn']['conv_size'],
-                              windows[params['qcnn']['window'],
+                              windows=params['qcnn']['window'],
                               activation=activations[params['qcnn']['activation']])
 
         self.conv_a = KimConv(params['emb_dim'],
