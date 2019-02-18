@@ -242,8 +242,8 @@ class DeepCNN(Model):
         q = self.embs(q)
         a = self.embs(a)
 
-        q.unsqueeze(1)
-        a.unsqueeze(1)
+        q = q.unsqueeze(1)
+        a = a.unsqueeze(1)
         qemb = self.conv_1(q)
         aemb = self.conv_1(a)
 
