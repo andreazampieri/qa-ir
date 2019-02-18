@@ -247,8 +247,8 @@ class DeepCNN(Model):
         qemb = self.conv_1(q)
         aemb = self.conv_1(a)
 
-        print(qemb.size)
-        print(aemb.size)
+        print(qemb.shape)
+        print(aemb.shape)
         1/0
         # qemb = self.conv_2(qemb)
         # aemb = self.conv_2(aemb)
