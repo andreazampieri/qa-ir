@@ -181,3 +181,5 @@ class Classifier(Trainer):
                 break
 
             logging.info(f'Epoch {epoch}: loss {running_loss/(seen_batches+1):.4f}, valid_acc {valid_map:.4f} best_acc {best_map:.4f}')
+        logging.info(f'Best result in epoch {epoch_best_result}')
+    
