@@ -11,19 +11,19 @@
             "qcnn":{
                 "conv_size": 100,
                 "window":5,
-                "activation":"relu"
+                "activation":"tanh"
             },
             "acnn":{
                 "conv_size": 100,
                 "window":5,
-                "activation":"relu"
+                "activation":"tanh"
             }
         }
 
     },
     "seed": 123,
     "patience": 20,
-    "batch_size": 15,
+    "batch_size": 50,
     "optimizer":{
         "name":"Adagrad",
         "params":{
