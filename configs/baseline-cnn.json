@@ -11,12 +11,12 @@
             "qcnn":{
                 "conv_size": 700,
                 "window":[5],
-                "activation":"relu"
+                "activation":"tanh"
             },
             "acnn":{
                 "conv_size": 700,
                 "window":[5],
-                "activation":"relu"
+                "activation":"tanh"
             }
         }
 
