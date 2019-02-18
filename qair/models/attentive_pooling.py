@@ -216,6 +216,7 @@ class DeepCNN(Model):
         self.conv_2 = SimpleConv(params['emb_dim'],
                                  params['cnn2']['conv_size'],
                                  params['cnn2']['window'],
+                                 channels=params['cnn1']['conv_size'],
                                  activation=activations[params['cnn2']['activation']])
 
         self.pool = lambda t: self.horizontal_pooling(t)
