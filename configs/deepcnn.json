@@ -9,12 +9,12 @@
             "hidden_size":100,
             "pad_idx":0,
             "cnn1":{
-                "conv_size":100,
+                "conv_size":50,
                 "window": 5,
                 "activation":"tanh"
             },
             "cnn2":{
-                "conv_size":100,
+                "conv_size":50,
                 "window": 5,
                 "activation":"tanh"
             }
