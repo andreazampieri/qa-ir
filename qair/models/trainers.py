@@ -142,7 +142,6 @@ class Classifier(Trainer):
         data = list(zip(processed_dataset, labels))
         best_map = 0.
         wait = 0.
-        epoch_best_result = 0
         criterion = nn.BCELoss()
         for epoch in range(epochs):
             seen_batches = 0
@@ -171,7 +170,6 @@ class Classifier(Trainer):
             valid_map = reranking.MAP(self.predict(validation))
             if valid_map > best_map:
                 best_map = valid_map
-                epoch_best_result = epoch
                 wait = 0
                 self.model.checkpoint()
             wait += 1
@@ -181,5 +179,4 @@ class Classifier(Trainer):
                 break
 
             logging.info(f'Epoch {epoch}: loss {running_loss/(seen_batches+1):.4f}, valid_acc {valid_map:.4f} best_acc {best_map:.4f}')
-        logging.info(f'Best result in epoch {epoch_best_result}')
     
