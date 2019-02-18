@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as f
+from torch.nn import Conv2d
 
 from qair.models import Model
 from qair.models.layers import KimConv, activations, AttentionMatrix, SimpleConv
@@ -208,16 +209,29 @@ class DeepCNN(Model):
                                  params['emb_dim'],
                                  vocab['PAD'])
 
-        self.conv_1 = SimpleConv(params['emb_dim'],
-                                 params['cnn1']['conv_size'],
-                                 params['cnn1']['window'],
-                                 activation=activations[params['cnn1']['activation']])
+        # self.conv_1 = SimpleConv(params['emb_dim'],
+        #                          params['cnn1']['conv_size'],
+        #                          params['cnn1']['window'],
+        #                          activation=activations[params['cnn1']['activation']])
 
-        self.conv_2 = SimpleConv(params['emb_dim'],
-                                 params['cnn2']['conv_size'],
-                                 params['cnn2']['window'],
-                                 channels=params['cnn1']['conv_size'],
-                                 activation=activations[params['cnn2']['activation']])
+        # self.conv_2 = SimpleConv(params['emb_dim'],
+        #                          params['cnn2']['conv_size'],
+        #                          params['cnn2']['window'],
+        #                          channels=params['cnn1']['conv_size'],
+        #                          activation=activations[params['cnn2']['activation']])
+
+        emb_size = params['emb_dim']
+        conv_1_filters = params['cnn1']['conv_size']
+        conv_1_window = params['cnn1']['window']
+
+
+        self.conv_1 = Conv2d(1,conv_1_filters,
+                            kernel_size=(conv_1_window,emb_size))
+
+        conv_2_filters = params['cnn2']['conv_size']
+        conv_2_window = params['cnn2']['conv_size']
+        # self.conv_2 = Conv2d(conv_1_filters,conv_2_filters,
+        #                     kernel_size=(conv_2_window,emb_dim))
 
         self.pool = lambda t: self.horizontal_pooling(t)
 
@@ -231,8 +245,11 @@ class DeepCNN(Model):
         qemb = self.conv_1(q)
         aemb = self.conv_1(a)
 
-        qemb = self.conv_2(qemb)
-        aemb = self.conv_2(aemb)
+        print(qemb.size)
+        print(aemb.size)
+        1/0
+        # qemb = self.conv_2(qemb)
+        # aemb = self.conv_2(aemb)
 
         qemb = self.pool(qemb)
         aemb = self.pool(aemb)
