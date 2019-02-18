@@ -218,7 +218,7 @@ class DeepCNN(Model):
         #                          params['cnn2']['window'],
         #                          activation=activations[params['cnn2']['activation']])
 
-        self.pool = lambda t: horizontal_pooling(self,t)
+        self.pool = lambda t: self.horizontal_pooling(t)
 
 
     def forward(self,inp):
