@@ -10,19 +10,19 @@
             "pad_idx":0,
             "qcnn":{
                 "conv_size": 4000,
-                "windows":[5],
-                "activation":"sigmoid"
+                "window":[5],
+                "activation":"tanh"
             },
             "acnn":{
                 "conv_size": 4000,
-                "windows":[5],
-                "activation":"sigmoid"
+                "window":[5],
+                "activation":"tanh"
             }
         }
 
     },
     "seed": 123,
-    "patience": 10,
+    "patience": 15,
     "batch_size": 50,
     "optimizer":{
         "name":"Adam",
