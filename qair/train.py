@@ -95,6 +95,7 @@ if __name__=='__main__':
     check_opt = isinstance(cfg["optimizer"])
     if check_opt or check_params:
         original = cfg.copy()
+        counter = 1
         params = cfg["model"]["params"]
         if not check_params:
             params = [params]
@@ -107,7 +108,8 @@ if __name__=='__main__':
                 cfg["model"]["params"] = p
                 cfg["optimizer"] = o
                 logging.info(f'Current Model Config: {json.dumps(cfg, indent=4, sort_keys=True)}')
-                trainer(args.name,cfg,args.dataset)
+                trainer(args.name+str(counter),cfg,args.dataset)
+                counter += 1
 
     else:
         logging.info(f'Current Model Config: {json.dumps(cfg, indent=4, sort_keys=True)}')
