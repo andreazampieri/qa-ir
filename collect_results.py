@@ -22,7 +22,7 @@ pattern = re.compile(name+"(?P<number>[0-9]+)")
 for filename in os.listdir():
 	match = pattern.match(filename)
 	if match != None:
-		number = int(match("number"))
+		number = int(match["number"])
 		with open(filename+"/valid_metrics_best.json","r") as file:
 			res[number] = json.load(file)
 
