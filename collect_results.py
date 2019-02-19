@@ -34,7 +34,7 @@ for k,v in res.items():
 
 best_exp = pareto_frontier(m_ap,m_rr,exp_name)
 print("Best results in exp: ",str([v[-1] for v in best_exp]))
-plt.plot(list(m_ap.values()),list(m_rr.values()))
+plt.plot(m_ap,m_rr)
 plt.xlabel("MAP")
 plt.ylabel("MRR")
 plt.show()
