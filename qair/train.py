@@ -90,5 +90,25 @@ if __name__=='__main__':
     args = parser.parse_args()
     cfg = train_utils.load_config(file_name=args.config, override=args.override) 
     logging.info(f'Current Model Config: {json.dumps(cfg, indent=4, sort_keys=True)}')
-    print(cfg)
-    trainer(args.name, cfg, args.dataset)
+
+    check_params = isinstance(cfg["model"]["params"])
+    check_opt = isinstance(cfg["optimizer"])
+    if check_opt or check_params:
+        original = cfg.copy()
+        params = cfg["model"]["params"]
+        if not check_params:
+            params = [params]
+        opt = cfg["optimizer"]
+        if not check_opt:
+            opt = [opt]
+
+        for p in params:
+            for o in opt:
+                cfg["model"]["params"] = p
+                cfg["optimizer"] = o
+                logging.info(f'Current Model Config: {json.dumps(cfg, indent=4, sort_keys=True)}')
+                trainer(args.name,cfg,args.dataset)
+
+    else:
+        logging.info(f'Current Model Config: {json.dumps(cfg, indent=4, sort_keys=True)}')
+        trainer(args.name, cfg, args.dataset)

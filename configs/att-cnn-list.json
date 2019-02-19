@@ -1,0 +1,89 @@
+{
+    "embeddings":"glove",
+    "train_as":"classifier",
+    "parser":"text",
+    "model":{
+        "name":"test-att",
+        "params":[
+                {
+                "static_emb": true,
+                "hidden_size": 100,
+                "pad_idx":0,
+                "qcnn":{
+                    "conv_size": 100,
+                    "window":5,
+                    "activation":"relu"
+                },
+                "acnn":{
+                    "conv_size": 100,
+                    "window":5,
+                    "activation":"relu"
+                }},
+                {
+                "static_emb": true,
+                "hidden_size": 50,
+                "pad_idx":0,
+                "qcnn":{
+                    "conv_size": 50,
+                    "window":5,
+                    "activation":"relu"
+                },
+                "acnn":{
+                    "conv_size": 50,
+                    "window":5,
+                    "activation":"relu"
+                }},
+                {
+                "static_emb": true,
+                "hidden_size": 100,
+                "pad_idx":0,
+                "qcnn":{
+                    "conv_size": 100,
+                    "window":5,
+                    "activation":"tanh"
+                },
+                "acnn":{
+                    "conv_size": 100,
+                    "window":5,
+                    "activation":"tanh"
+                }},
+                {
+                "static_emb": true,
+                "hidden_size": 50,
+                "pad_idx":0,
+                "qcnn":{
+                    "conv_size": 50,
+                    "window":5,
+                    "activation":"tanh"
+                },
+                "acnn":{
+                    "conv_size": 50,
+                    "window":5,
+                    "activation":"tanh"
+                }
+                }
+            ]
+        }
+
+    },
+    "seed": 123,
+    "patience": 5,
+    "batch_size": 50,
+    "optimizer":
+        [{
+        "name":"Adadelta",
+        "params":{
+            "lr": 0.5
+        }},
+        {
+        "name":"Adam",
+        "params":{
+            "lr": 0.003
+        }},{
+        "name":"Adagrad",
+        "params":{
+            "lr": 0.8
+        }}
+        ]
+    }
+}
