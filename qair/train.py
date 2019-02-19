@@ -91,8 +91,8 @@ if __name__=='__main__':
     cfg = train_utils.load_config(file_name=args.config, override=args.override) 
     logging.info(f'Current Model Config: {json.dumps(cfg, indent=4, sort_keys=True)}')
 
-    check_params = isinstance(cfg["model"]["params"])
-    check_opt = isinstance(cfg["optimizer"])
+    check_params = isinstance(cfg["model"]["params"],list)
+    check_opt = isinstance(cfg["optimizer"],list)
     if check_opt or check_params:
         original = cfg.copy()
         counter = 1
