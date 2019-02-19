@@ -5,7 +5,7 @@ import re
 import matplotlib.pyplot as plt
 
 def pareto_frontier(a, b, name):
-    l = sorted(list(zip(a,b,name)))
+    l = sorted(list(zip(a,b,name)),reverse=True)
     p_front = [l[0]]    
     for point in l[1:]:
         if point[1] >= p_front[-1][1]:
@@ -34,7 +34,7 @@ for k,v in res.items():
 
 best_exp = pareto_frontier(m_ap,m_rr,exp_name)
 print("Best results in exp: ",str([v[-1] for v in best_exp]))
-plt.plot(m_ap,m_rr)
+plt.plot(m_ap,m_rr,"ro")
 plt.xlabel("MAP")
 plt.ylabel("MRR")
-plt.show();
+plt.show()
