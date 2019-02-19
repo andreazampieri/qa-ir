@@ -2,7 +2,7 @@ import os
 import json
 import sys
 import re 
-import pyplot as plt
+import matplotlib.pyplot as plt
 
 def pareto_frontier(a, b, name):
     l = sorted(list(zip(a,b,name)))
