@@ -1,6 +1,6 @@
 import os
 import json
-import sb
+import sys
 import re 
 import pyplot as plt
 
@@ -12,10 +12,10 @@ def pareto_frontier(a, b, name):
             p_front.append(point)
     return p_front
 
-if len(sb.argv) != 2:
+if len(sys.argv) != 2:
 	name = "testcnn"
 else:
-	name = sb.argv[1]
+	name = sys.argv[1]
 
 res = dict()
 pattern = re.compile(name+"(?P<number>[0-9]+)")
