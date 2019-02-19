@@ -90,4 +90,5 @@ if __name__=='__main__':
     args = parser.parse_args()
     cfg = train_utils.load_config(file_name=args.config, override=args.override) 
     logging.info(f'Current Model Config: {json.dumps(cfg, indent=4, sort_keys=True)}')
+    print(cfg)
     trainer(args.name, cfg, args.dataset)
