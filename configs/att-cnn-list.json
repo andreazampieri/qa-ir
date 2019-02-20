@@ -7,7 +7,7 @@
         "params":[
                 {
                 "static_emb": true,
-                "hidden_size": 100,
+                "hidden_size": 50,
                 "pad_idx":0,
                 "qcnn":{
                     "conv_size": 100,
@@ -24,18 +24,18 @@
                 "hidden_size": 50,
                 "pad_idx":0,
                 "qcnn":{
-                    "conv_size": 100,
+                    "conv_size": 80,
                     "window":5,
                     "activation":"tanh"
                 },
                 "acnn":{
-                    "conv_size": 100,
+                    "conv_size": 80,
                     "window":5,
                     "activation":"tanh"
                 }},
                 {
                 "static_emb": true,
-                "hidden_size": 150,
+                "hidden_size": 30,
                 "pad_idx":0,
                 "qcnn":{
                     "conv_size": 100,
