@@ -9,7 +9,8 @@
             "hidden_size": 100,
             "pad_idx":0,
             "lstm":{
-                "single_hidden_dim": 100            
+                "single_hidden_dim": 100,
+                "activation" : "tanh"
             }
         }
 
@@ -20,7 +21,7 @@
     "optimizer":{
         "name":"Adadelta",
         "params":{
-            "lr": 0.5
+            "lr": 0.1
         }
     }
 }
