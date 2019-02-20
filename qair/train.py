@@ -89,7 +89,6 @@ if __name__=='__main__':
     parser.add_argument("--name", help="the name of the experiment")
     args = parser.parse_args()
     cfg = train_utils.load_config(file_name=args.config, override=args.override) 
-    logging.info(f'Current Model Config: {json.dumps(cfg, indent=4, sort_keys=True)}')
 
     check_params = isinstance(cfg["model"]["params"],list)
     check_opt = isinstance(cfg["optimizer"],list)
