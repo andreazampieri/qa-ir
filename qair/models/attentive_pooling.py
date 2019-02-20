@@ -204,8 +204,8 @@ class AP_LSTM(Model):
         q,a = inp
         q_emb = self.embs(q)
         a_emb = self.embs(a)
-        q_enc = self.lstm(q_emb)
-        a_enc = self.lstm(a_emb)
+        q_enc = self.lstm(q_emb).transpose(1,2)
+        a_enc = self.lstm(a_emb).transpose(1,2)
         mat = self.attention_mat(q_enc,a_enc)
         q_att = f.softmax(self.h_pool(mat),dim=1)
         a_att = f.softmax(self.v_pool(mat),dim=1)
