@@ -1,0 +1,49 @@
+{
+    "embeddings":"glove",
+    "train_as":"classifier",
+    "parser":"text",
+    "model":{
+        "name":"test-att-lstm",
+        "params":[{
+            "static_emb": true,
+            "hidden_size": 100,
+            "pad_idx":0,
+            "lstm":{
+                "single_hidden_dim": 100            
+            }
+            },
+            {
+            "static_emb": true,
+            "hidden_size": 100,
+            "pad_idx":0,
+            "lstm":{
+                "single_hidden_dim": 100,
+                "activation": "tanh"
+            }
+            },
+            {
+            "static_emb": true,
+            "hidden_size": 100,
+            "pad_idx":0,
+            "lstm":{
+                "single_hidden_dim": 150
+            }
+            }]
+
+    },
+    "seed": 123,
+    "patience": 4,
+    "batch_size": 50,
+    "optimizer":[{
+        "name":"Adadelta",
+        "params":{
+            "lr": 0.5
+        }
+        },
+        {
+        "name":"Adadelta",
+        "params":{
+            "lr": 0.7
+        }
+        }]
+}
