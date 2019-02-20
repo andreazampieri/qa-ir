@@ -67,9 +67,16 @@
     "seed": 123,
     "patience": 5,
     "batch_size": 50,
-    "optimizer":{
-        "name":"Adagrad",
+    "optimizer":
+        [{
+        "name":"Adadelta",
         "params":{
-            "lr": 0.8
+            "lr": 0.5
+        }},
+        {
+        "name":"Adam",
+        "params":{
+            "lr": 0.003
         }}
+        ]
 }
