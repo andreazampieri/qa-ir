@@ -13,13 +13,14 @@ def pareto_frontier(a, b, name):
     return p_front
 
 if len(sys.argv) != 2:
-	name = ""
+	print("Wrong usage: use python collect_results.py <testname>")
+	exit()
 else:
 	name = sys.argv[1]
 
 res = dict()
 pattern = re.compile(name+"(?P<number>[0-9]+)")
-print(f"Looking for <...{name}[number]...>")
+print(f"Looking for <{name}[number]>")
 for filename in os.listdir():
 	match = pattern.match(filename)
 	if match != None:
