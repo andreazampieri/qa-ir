@@ -21,29 +21,29 @@
                 }},
                 {
                 "static_emb": true,
-                "hidden_size": 100,
+                "hidden_size": 50,
                 "pad_idx":0,
                 "qcnn":{
-                    "conv_size": 200,
+                    "conv_size": 100,
                     "window":5,
                     "activation":"tanh"
                 },
                 "acnn":{
-                    "conv_size": 200,
+                    "conv_size": 100,
                     "window":5,
                     "activation":"tanh"
                 }},
                 {
                 "static_emb": true,
-                "hidden_size": 100,
+                "hidden_size": 150,
                 "pad_idx":0,
                 "qcnn":{
-                    "conv_size": 150,
+                    "conv_size": 100,
                     "window":5,
                     "activation":"tanh"
                 },
                 "acnn":{
-                    "conv_size": 150,
+                    "conv_size": 100,
                     "window":5,
                     "activation":"tanh"
                 }}
@@ -57,11 +57,6 @@
         "name":"Adadelta",
         "params":{
             "lr": 0.5
-        }},
-        {
-        "name":"Adagrad",
-        "params":{
-            "lr": 0.2
         }}
         ]
 }
