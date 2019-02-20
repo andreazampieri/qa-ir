@@ -34,7 +34,15 @@ for k,v in res.items():
 
 best_exp = pareto_frontier(m_ap,m_rr,exp_name)
 print("Best results in exp: ",str([v[-1] for v in best_exp]))
-plt.plot(m_ap,m_rr,"ro")
-plt.xlabel("MAP")
-plt.ylabel("MRR")
-plt.show()
+# plt.plot(m_ap,m_rr,"ro")
+# plt.xlabel("MAP")
+# plt.ylabel("MRR")
+# plt.show()
+
+for ap,rr, exp_no in best_exp:
+	stats_file = f"{name}{exp_no}/"
+	with open(stats_file,"r") as file:
+		data = json.load(file)
+		print(f"Experiment {exp_no}:\tmAP: {ap}\tmRR: {rr}")
+		print(f"Model params : {data['model']['params']}")
+		print(f"Optimizer: {data['optimizer']}")
