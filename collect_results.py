@@ -40,7 +40,7 @@ print("Best results in exp: ",str([v[-1] for v in best_exp]))
 # plt.show()
 
 for ap,rr, exp_no in best_exp:
-	stats_file = f"{name}{exp_no}/"
+	stats_file = f"{name}{exp_no}/config.json"
 	with open(stats_file,"r") as file:
 		data = json.load(file)
 		print(f"Experiment {exp_no}:\tmAP: {ap}\tmRR: {rr}")
