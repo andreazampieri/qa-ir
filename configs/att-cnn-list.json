@@ -10,6 +10,20 @@
                 "hidden_size": 50,
                 "pad_idx":0,
                 "qcnn":{
+                    "conv_size": 120,
+                    "window":5,
+                    "activation":"tanh"
+                },
+                "acnn":{
+                    "conv_size": 120,
+                    "window":5,
+                    "activation":"tanh"
+                }},
+                {
+                "static_emb": true,
+                "hidden_size": 50,
+                "pad_idx":0,
+                "qcnn":{
                     "conv_size": 130,
                     "window":5,
                     "activation":"tanh"
