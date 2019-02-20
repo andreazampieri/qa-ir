@@ -13,7 +13,7 @@ def pareto_frontier(a, b, name):
     return p_front
 
 if len(sys.argv) != 2:
-	name = "testcnn"
+	name = ""
 else:
 	name = sys.argv[1]
 
