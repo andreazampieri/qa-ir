@@ -12,16 +12,16 @@
                 "qcnn":{
                     "conv_size": 100,
                     "window":5,
-                    "activation":"relu"
+                    "activation":"tanh"
                 },
                 "acnn":{
                     "conv_size": 100,
                     "window":5,
-                    "activation":"relu"
+                    "activation":"tanh"
                 }},
                 {
                 "static_emb": true,
-                "hidden_size": 200,
+                "hidden_size": 100,
                 "pad_idx":0,
                 "qcnn":{
                     "conv_size": 200,
@@ -32,8 +32,21 @@
                     "conv_size": 200,
                     "window":5,
                     "activation":"tanh"
-                }
-                }
+                }},
+                {
+                "static_emb": true,
+                "hidden_size": 100,
+                "pad_idx":0,
+                "qcnn":{
+                    "conv_size": 150,
+                    "window":5,
+                    "activation":"tanh"
+                },
+                "acnn":{
+                    "conv_size": 150,
+                    "window":5,
+                    "activation":"tanh"
+                }}
             ]
         },
     "seed": 123,
