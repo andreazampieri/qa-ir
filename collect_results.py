@@ -19,7 +19,7 @@ else:
 
 res = dict()
 pattern = re.compile(name+"(?P<number>[0-9]+)")
-print(f"Looking for <{name}*>")
+print(f"Looking for <...{name}[number]...>")
 for filename in os.listdir():
 	match = pattern.match(filename)
 	if match != None:
