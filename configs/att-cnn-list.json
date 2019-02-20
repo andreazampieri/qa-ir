@@ -21,21 +21,21 @@
                 }},
                 {
                 "static_emb": true,
-                "hidden_size": 50,
+                "hidden_size": 100,
                 "pad_idx":0,
                 "qcnn":{
-                    "conv_size": 80,
+                    "conv_size": 100,
                     "window":5,
                     "activation":"tanh"
                 },
                 "acnn":{
-                    "conv_size": 80,
+                    "conv_size": 100,
                     "window":5,
                     "activation":"tanh"
                 }},
                 {
                 "static_emb": true,
-                "hidden_size": 30,
+                "hidden_size": 80,
                 "pad_idx":0,
                 "qcnn":{
                     "conv_size": 100,
