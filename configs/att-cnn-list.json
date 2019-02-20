@@ -7,7 +7,7 @@
         "params":[
                 {
                 "static_emb": true,
-                "hidden_size": 50,
+                "hidden_size": 40,
                 "pad_idx":0,
                 "qcnn":{
                     "conv_size": 120,
@@ -21,21 +21,7 @@
                 }},
                 {
                 "static_emb": true,
-                "hidden_size": 50,
-                "pad_idx":0,
-                "qcnn":{
-                    "conv_size": 130,
-                    "window":5,
-                    "activation":"tanh"
-                },
-                "acnn":{
-                    "conv_size": 130,
-                    "window":5,
-                    "activation":"tanh"
-                }},
-                {
-                "static_emb": true,
-                "hidden_size": 60,
+                "hidden_size": 30,
                 "pad_idx":0,
                 "qcnn":{
                     "conv_size": 120,
@@ -49,15 +35,29 @@
                 }},
                 {
                 "static_emb": true,
-                "hidden_size": 70,
+                "hidden_size": 45,
                 "pad_idx":0,
                 "qcnn":{
-                    "conv_size": 130,
+                    "conv_size": 120,
                     "window":5,
                     "activation":"tanh"
                 },
                 "acnn":{
-                    "conv_size": 130,
+                    "conv_size": 120,
+                    "window":5,
+                    "activation":"tanh"
+                }},
+                {
+                "static_emb": true,
+                "hidden_size": 55,
+                "pad_idx":0,
+                "qcnn":{
+                    "conv_size": 120,
+                    "window":5,
+                    "activation":"tanh"
+                },
+                "acnn":{
+                    "conv_size": 120,
                     "window":5,
                     "activation":"tanh"
                 }}
