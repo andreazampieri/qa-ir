@@ -24,7 +24,7 @@ for filename in os.listdir():
 	match = pattern.match(filename)
 	if match != None:
 		number = int(match["number"])
-		with open(filename+"/valid_metrics_best.json","r") as file:
+		with open(filename+"/test_metrics_best.json","r") as file:
 			res[number] = json.load(file)
 
 m_ap,m_rr, exp_name = [],[],[]
