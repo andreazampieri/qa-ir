@@ -185,13 +185,14 @@ class AP_LSTM(Model):
             act = activations[params['lstm']['activation']]
         except KeyError:
             act = None
-            
+
+        lstm_hidden = params['lstm']['single_hidden_dim'] * 2
         self.lstm = BiLSTM(params['emb_dim'],params['lstm']['single_hidden_dim'],activation=act)
-        self.attention_mat = AttentionMatrix(params['lstm']['single_hidden_dim']*2)
+        self.attention_mat = AttentionMatrix(lstm_hidden)
         self.h_pool = lambda t : self.horizontal_pooling(t)
         self.v_pool = lambda t : self.vertical_pooling(t)
         self.dense = nn.Sequential(
-            nn.Linear(2*params['qcnn']['conv_size'], params['hidden_size']),
+            nn.Linear(2*lstm_hidden, params['hidden_size']),
             nn.Tanh(),
             nn.Linear(params['hidden_size'], 1),
         )
