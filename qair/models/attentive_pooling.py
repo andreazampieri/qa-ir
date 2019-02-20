@@ -181,7 +181,12 @@ class AP_LSTM(Model):
                                  params['emb_dim'],
                                  vocab['PAD'])
 
-        self.lstm = BiLSTM(params['emb_dim'],params['lstm']['single_hidden_dim'],activation=activations[params['lstm']['activation']])
+        try:
+            act = activations[params['lstm']['activation']]
+        except KeyError:
+            act = None
+            
+        self.lstm = BiLSTM(params['emb_dim'],params['lstm']['single_hidden_dim'],activation=act)
         self.attention_mat = AttentionMatrix(params['lstm']['single_hidden_dim']*2)
         self.h_pool = lambda t : self.horizontal_pooling(t)
         self.v_pool = lambda t : self.vertical_pooling(t)
