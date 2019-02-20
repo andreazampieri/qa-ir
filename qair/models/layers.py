@@ -6,7 +6,8 @@ import numpy as np
 activations = {
     'relu':torch.relu,
     'tanh':torch.tanh,
-    'sigmoid':torch.sigmoid
+    'sigmoid':torch.sigmoid,
+    None:None
 }
 
 def attention(q, a, mask_q=None, mask_a=None):
@@ -39,19 +40,31 @@ class AttentionMatrix(nn.Module):
 
 class SimpleConv(nn.Module):
 
-    def __init__(self,emb_dim,hidden_dim,ctx_window,activation=torch.relu):
+    def __init__(self,input_dim,hidden_dim,ctx_window,activation=torch.relu):
         super(SimpleConv,self).__init__()
-        self.conv = nn.Conv2d(1,hidden_dim,kernel_size=(ctx_window,emb_dim))
+        self.conv = nn.Conv2d(1,hidden_dim,kernel_size=(ctx_window,input_dim))
         odd_adjustment = 1 if ctx_window%2==0 else 0
         self.pad = nn.ZeroPad2d((0,0,ctx_window-1-odd_adjustment,ctx_window-1))
         self.activation = activation
     
-    def forward(self,x_emb):
-        x_emb = x_emb.unsqueeze(1) #adding a dimension (the channel for the convolution)   
+    def forward(self,x):
+        x = x.unsqueeze(1) #adding a dimension (the channel for the convolution)   
         #return f.relu(self.conv(self.pad(x_emb))).squeeze(dim=3) # remove the single channel extra dimension
-        return self.activation(self.conv(self.pad(x_emb)).squeeze(dim=3))
+        return self.activation(self.conv(self.pad(x)).squeeze(dim=3))
 
-
+class BiLSTM(nn.Module):
+  
+    def __init__(self,input_dim,single_hidden_dim,activation = None):
+        super(LSTMModule,self).__init__()
+        self.bilstm = nn.LSTM(input_dim,single_hidden_dim,bidirectional=True)
+        self.activation = activation
+    
+    def forward(self,x):
+        # LSTM returns a tuple, the tensor is the first element
+        out = self.bilstm(x)[0]
+        if self.activation  != None:
+            out = self.activation(out)
+        return out
 
 def sigmoid_attention(q, a, mask_q=None, mask_a=None):
     dot_qa = torch.bmm(q, a.transpose(1, 2))

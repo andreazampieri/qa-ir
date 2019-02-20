@@ -3,20 +3,13 @@
     "train_as":"classifier",
     "parser":"text",
     "model":{
-        "name":"test-att-cnn",
+        "name":"test-att-lstm",
         "params":{
             "static_emb": true,
             "hidden_size": 100,
             "pad_idx":0,
-            "qcnn":{
-                "conv_size": 100,
-                "window":5,
-                "activation":"relu"
-            },
-            "acnn":{
-                "conv_size": 100,
-                "window":5,
-                "activation":"relu"
+            "lstm":{
+                "single_hidden_dim": 100            
             }
         }
 
@@ -27,7 +20,7 @@
     "optimizer":{
         "name":"Adadelta",
         "params":{
-            "lr": 0.1
+            "lr": 0.5
         }
     }
 }

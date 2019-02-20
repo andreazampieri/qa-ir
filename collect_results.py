@@ -45,4 +45,4 @@ for ap,rr, exp_no in best_exp:
 		data = json.load(file)
 		print(f"Experiment {exp_no}:\tmAP: {ap}\tmRR: {rr}")
 		print(f"Model params : {data['model']['params']}")
-		print(f"Optimizer: {data['optimizer']}")
+		print(f"Optimizer: {data['optimizer']}\n\n")
