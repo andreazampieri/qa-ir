@@ -26,34 +26,6 @@
                 "qcnn":{
                     "conv_size": 200,
                     "window":5,
-                    "activation":"relu"
-                },
-                "acnn":{
-                    "conv_size": 200,
-                    "window":5,
-                    "activation":"relu"
-                }},
-                {
-                "static_emb": true,
-                "hidden_size": 100,
-                "pad_idx":0,
-                "qcnn":{
-                    "conv_size": 100,
-                    "window":5,
-                    "activation":"tanh"
-                },
-                "acnn":{
-                    "conv_size": 100,
-                    "window":5,
-                    "activation":"tanh"
-                }},
-                {
-                "static_emb": true,
-                "hidden_size": 200,
-                "pad_idx":0,
-                "qcnn":{
-                    "conv_size": 200,
-                    "window":5,
                     "activation":"tanh"
                 },
                 "acnn":{
@@ -74,9 +46,9 @@
             "lr": 0.5
         }},
         {
-        "name":"Adam",
+        "name":"Adagrad",
         "params":{
-            "lr": 0.003
+            "lr": 0.02
         }}
         ]
 }
