@@ -9,7 +9,8 @@
             "hidden_size": 100,
             "pad_idx":0,
             "lstm":{
-                "single_hidden_dim": 100            
+                "single_hidden_dim": 100,
+                "activation" : "relu"
             }
             },
             {
@@ -26,7 +27,8 @@
             "hidden_size": 100,
             "pad_idx":0,
             "lstm":{
-                "single_hidden_dim": 150
+                "single_hidden_dim": 150,
+                "activation" : "tanh"
             }
             }]
 
@@ -41,9 +43,9 @@
         }
         },
         {
-        "name":"Adadelta",
+        "name":"Adagrad",
         "params":{
-            "lr": 0.7
+            "lr": 0.1
         }
         }]
 }
