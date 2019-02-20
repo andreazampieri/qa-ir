@@ -55,7 +55,7 @@ class SimpleConv(nn.Module):
 class BiLSTM(nn.Module):
   
     def __init__(self,input_dim,single_hidden_dim,activation = None):
-        super(LSTMModule,self).__init__()
+        super(BiLSTM,self).__init__()
         self.bilstm = nn.LSTM(input_dim,single_hidden_dim,bidirectional=True)
         self.activation = activation
     
