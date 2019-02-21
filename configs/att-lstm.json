@@ -8,6 +8,7 @@
             "static_emb": true,
             "hidden_size": 100,
             "pad_idx":0,
+            "shared": true,
             "lstm":{
                 "single_hidden_dim": 100,
                 "activation" : "tanh"

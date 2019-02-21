@@ -8,15 +8,17 @@
             "static_emb": true,
             "hidden_size": 100,
             "pad_idx":0,
+            "shared" : false,
             "lstm":{
                 "single_hidden_dim": 100,
-                "activation" : "relu"
+                "activation" : "tanh"
             }
             },
             {
             "static_emb": true,
             "hidden_size": 100,
             "pad_idx":0,
+            "shared" : true,
             "lstm":{
                 "single_hidden_dim": 100,
                 "activation": "tanh"
@@ -26,8 +28,18 @@
             "static_emb": true,
             "hidden_size": 100,
             "pad_idx":0,
+            "shared": false,
             "lstm":{
-                "single_hidden_dim": 150,
+                "single_hidden_dim": 110,
+                "activation" : "tanh"
+            }},
+            {
+            "static_emb": true,
+            "hidden_size": 100,
+            "pad_idx":0,
+            "shared": true,
+            "lstm":{
+                "single_hidden_dim": 110,
                 "activation" : "tanh"
             }
             }]
