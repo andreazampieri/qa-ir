@@ -6,8 +6,9 @@
         "name":"test-att-cnn",
         "params":{
             "static_emb": true,
-            "hidden_size": 50,
+            "hidden_size": 65,
             "pad_idx":0,
+            "shared": false,
             "qcnn":{
                 "conv_size": 120,
                 "window":5,
