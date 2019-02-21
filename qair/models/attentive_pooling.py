@@ -129,9 +129,18 @@ class AP_CNN(Model):
         self.embs = nn.Embedding(params['emb_num'],
                                  params['emb_dim'],
                                  vocab['PAD'])
+
+        try:
+            self.shared = params['shared']
+        except:
+            self.shared = True
+
         self.convolution_q = SimpleConv(params['emb_dim'],params['qcnn']['conv_size'],params['qcnn']['window'])
-        self.convolution_a = SimpleConv(params['emb_dim'],params['acnn']['conv_size'],params['acnn']['window'])
-        #self.convolution = SimpleConv(params['emb_dim'],params['qcnn']['conv_size'],params['qcnn']['window'])
+        if self.shared:
+            self.convolution_a = self.convolution_q
+        else:
+            self.convolution_a = SimpleConv(params['emb_dim'],params['acnn']['conv_size'],params['acnn']['window'])
+
         self.attention_mat = AttentionMatrix(params['qcnn']['conv_size'])
         self.h_pool = lambda t : self.horizontal_pooling(t)
         self.v_pool = lambda t : self.vertical_pooling(t)
@@ -188,8 +197,18 @@ class AP_LSTM(Model):
         except KeyError:
             act = None
 
+        try:
+            self.shared = params['shared']
+        except:
+            self.shared = True
+
         lstm_hidden = params['lstm']['single_hidden_dim'] * 2
-        self.lstm = BiLSTM(params['emb_dim'],params['lstm']['single_hidden_dim'],activation=act)
+        self.lstm_q = BiLSTM(params['emb_dim'],params['lstm']['single_hidden_dim'],activation=act)
+        if self.shared:
+            self.lstm_a = self.lstm_q
+        else:
+            self.lstm_a = BiLSTM(params['emb_dim'],params['lstm']['single_hidden_dim'],activation=act)
+
         self.attention_mat = AttentionMatrix(lstm_hidden)
         self.h_pool = lambda t : self.horizontal_pooling(t)
         self.v_pool = lambda t : self.vertical_pooling(t)
@@ -206,8 +225,8 @@ class AP_LSTM(Model):
         q,a = inp
         q_emb = self.embs(q)
         a_emb = self.embs(a)
-        q_enc = self.lstm(q_emb).transpose(1,2)
-        a_enc = self.lstm(a_emb).transpose(1,2)
+        q_enc = self.lstm_q(q_emb).transpose(1,2)
+        a_enc = self.lstm_a(a_emb).transpose(1,2)
         mat = self.attention_mat(q_enc,a_enc)
         q_att = f.softmax(self.h_pool(mat),dim=1)
         a_att = f.softmax(self.v_pool(mat),dim=1)
