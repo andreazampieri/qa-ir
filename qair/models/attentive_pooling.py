@@ -129,9 +129,9 @@ class AP_CNN(Model):
         self.embs = nn.Embedding(params['emb_num'],
                                  params['emb_dim'],
                                  vocab['PAD'])
-        #self.convolution_q = ConvolutionModule(emb_dim,dict_size,hidden_dim,ctx_window)
-        #self.convolution_a = ConvolutionModule(emb_dim,dict_size,hidden_dim,ctx_window)
-        self.convolution = SimpleConv(params['emb_dim'],params['qcnn']['conv_size'],params['qcnn']['window'])
+        self.convolution_q = SimpleConv(params['emb_dim'],params['qcnn']['conv_size'],params['qcnn']['window'])
+        self.convolution_a = SimpleConv(params['emb_dim'],params['acnn']['conv_size'],params['acnn']['window'])
+        #self.convolution = SimpleConv(params['emb_dim'],params['qcnn']['conv_size'],params['qcnn']['window'])
         self.attention_mat = AttentionMatrix(params['qcnn']['conv_size'])
         self.h_pool = lambda t : self.horizontal_pooling(t)
         self.v_pool = lambda t : self.vertical_pooling(t)
@@ -148,8 +148,10 @@ class AP_CNN(Model):
         q,a = inp
         q_emb = self.embs(q)
         a_emb = self.embs(a)
-        q_enc = self.convolution(q_emb)
-        a_enc = self.convolution(a_emb)
+        # q_enc = self.convolution(q_emb)
+        # a_enc = self.convolution(a_emb)
+        q_enc = self.convolution_q(q_emb)
+        a_enc = self.convolution_a(a_emb)
         mat = self.attention_mat(q_enc,a_enc)
         q_att = f.softmax(self.h_pool(mat),dim=1)
         a_att = f.softmax(self.v_pool(mat),dim=1)
