@@ -7,35 +7,7 @@
         "params":[
                 {
                 "static_emb": true,
-                "hidden_size": 40,
-                "pad_idx":0,
-                "qcnn":{
-                    "conv_size": 120,
-                    "window":5,
-                    "activation":"tanh"
-                },
-                "acnn":{
-                    "conv_size": 120,
-                    "window":5,
-                    "activation":"tanh"
-                }},
-                {
-                "static_emb": true,
-                "hidden_size": 30,
-                "pad_idx":0,
-                "qcnn":{
-                    "conv_size": 120,
-                    "window":5,
-                    "activation":"tanh"
-                },
-                "acnn":{
-                    "conv_size": 120,
-                    "window":5,
-                    "activation":"tanh"
-                }},
-                {
-                "static_emb": true,
-                "hidden_size": 45,
+                "hidden_size": 50,
                 "pad_idx":0,
                 "qcnn":{
                     "conv_size": 120,
@@ -52,14 +24,28 @@
                 "hidden_size": 50,
                 "pad_idx":0,
                 "qcnn":{
+                    "conv_size": 110,
+                    "window":5,
+                    "activation":"tanh"
+                },
+                "acnn":{
+                    "conv_size": 110,
+                    "window":5,
+                    "activation":"tanh"
+                }},
+                {
+                "static_emb": true,
+                "hidden_size": 65,
+                "pad_idx":0,
+                "qcnn":{
                     "conv_size": 120,
                     "window":5,
-                    "activation":"relu"
+                    "activation":"tanh"
                 },
                 "acnn":{
                     "conv_size": 120,
                     "window":5,
-                    "activation":"relu"
+                    "activation":"tanh"
                 }}
             ]
         },
