@@ -132,7 +132,7 @@ class AP_CNN(Model):
 
         try:
             self.shared = params['shared']
-        except:
+        except KeyError:
             self.shared = True
 
         self.convolution_q = SimpleConv(params['emb_dim'],params['qcnn']['conv_size'],params['qcnn']['window'])
@@ -199,7 +199,7 @@ class AP_LSTM(Model):
 
         try:
             self.shared = params['shared']
-        except:
+        except KeyError:
             self.shared = True
 
         lstm_hidden = params['lstm']['single_hidden_dim'] * 2
