@@ -1,33 +1,33 @@
 {
-    "embeddings":"alexi",
+    "embeddings":"glove",
     "train_as":"classifier",
-    "parser":"text_overlap",
+    "parser":"text",
     "model":{
-        "name":"severyn_2016",
+        "name":"cnn",
         "params":{
             "static_emb": true,
-            "hidden_size":100,
+            "hidden_size":1,
             "pad_idx":0,
             "qcnn":{
                 "conv_size":100,
                 "windows":[5],
-                "activation":"relu"
+                "activation":"tanh"
             },
             "acnn":{
                 "conv_size":100,
                 "windows":[5],
-                "activation":"relu"
+                "activation":"tanh"
             }
         }
 
     },
     "seed": 123,
-    "patience": 5,
+    "patience": 25,
     "batch_size": 50,
     "optimizer":{
         "name":"Adadelta",
         "params":{
+            "lr": 0.8
         }
     }
-
 }
