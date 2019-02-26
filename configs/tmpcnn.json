@@ -6,7 +6,7 @@
         "name":"cnn",
         "params":{
             "static_emb": true,
-            "hidden_size":1,
+            "hidden_size":400,
             "pad_idx":0,
             "qcnn":{
                 "conv_size":100,
