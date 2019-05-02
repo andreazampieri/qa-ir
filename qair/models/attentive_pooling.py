@@ -147,8 +147,7 @@ class AP_CNN(Model):
         self.dense = nn.Sequential(
             nn.Linear(2*params['qcnn']['conv_size'], params['hidden_size']),
             nn.Tanh(),
-            nn.Linear(params['hidden_size'], 1),
-            nn.Sigmoid()
+            nn.Linear(params['hidden_size'], 1)
         )
     
     def flatten(self,x):
