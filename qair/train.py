@@ -107,6 +107,7 @@ if __name__=='__main__':
                 cfg["model"]["params"] = p
                 cfg["optimizer"] = o
                 logging.info(f'Current Model Config: {json.dumps(cfg, indent=4, sort_keys=True)}')
+                print(args.name == None)
                 trainer(args.name+str(counter),cfg,args.dataset)
                 counter += 1
 
