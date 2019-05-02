@@ -148,6 +148,7 @@ class AP_CNN(Model):
             nn.Linear(2*params['qcnn']['conv_size'], params['hidden_size']),
             nn.Tanh(),
             nn.Linear(params['hidden_size'], 1),
+            nn.Sigmoid()
         )
     
     def flatten(self,x):
