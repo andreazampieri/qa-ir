@@ -61,12 +61,12 @@
         {
         "name":"Adam",
         "params":{
-            "lr": 0.02
+            "lr": 0.01
         }},
         {
         "name":"Adagrad",
         "params":{
-            "lr": 0.7
+            "lr": 0.8
         }}
         ]
 }
