@@ -5,7 +5,7 @@
     "model":{
         "name":"test-att-cnn",
         "params":{
-            "static_emb": false,
+            "static_emb": true,
             "hidden_size": 65,
             "pad_idx":0,
             "shared": false,

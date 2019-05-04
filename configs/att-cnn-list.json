@@ -57,6 +57,16 @@
         "name":"Adadelta",
         "params":{
             "lr": 0.1
+        }},
+        {
+        "name":"Adam",
+        "params":{
+            "lr": 0.02
+        }},
+        {
+        "name":"Adagrad",
+        "params":{
+            "lr": 0.7
         }}
         ]
 }
