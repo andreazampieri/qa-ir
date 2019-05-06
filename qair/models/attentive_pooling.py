@@ -148,9 +148,7 @@ class AP_CNN(Model):
             nn.BatchNorm1d(2*params['qcnn']['conv_size']),
             nn.Linear(2*params['qcnn']['conv_size'], params['hidden_size']),
             nn.Tanh(),
-            nn.Linear(params['hidden_size'], 32),
-            nn.Tanh(),
-            nn.Linear(32,1)
+            nn.Linear(params['hidden_size'], 1)
         )
     
     def flatten(self,x):
