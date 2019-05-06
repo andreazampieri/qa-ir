@@ -135,7 +135,6 @@ class AP_CNN(Model):
         except KeyError:
             self.shared = True
 
-        self.bn = nn.BatchNorm1d(300)
 
         self.convolution_q = SimpleConv(params['emb_dim'],params['qcnn']['conv_size'],params['qcnn']['window'])
         if self.shared:
@@ -157,8 +156,8 @@ class AP_CNN(Model):
     
     def forward(self,inp):
         q,a = inp
-        q_emb = self.bn(self.embs(q))
-        a_emb = self.bn(self.embs(a))
+        q_emb = self.embs(q)
+        a_emb = self.embs(a)
         # q_enc = self.convolution(q_emb)
         # a_enc = self.convolution(a_emb)
         q_enc = self.convolution_q(q_emb)
