@@ -145,11 +145,12 @@ class AP_CNN(Model):
         self.h_pool = lambda t : self.horizontal_pooling(t)
         self.v_pool = lambda t : self.vertical_pooling(t)
         self.dense = nn.Sequential(
+            nn.BatchNorm1d(2*params['qcnn']['conv_size']),
             nn.Linear(2*params['qcnn']['conv_size'], params['hidden_size']),
             nn.Tanh(),
-            nn.Linear(params['hidden_size'], 50),
-            nn.LeakyReLU(),
-            nn.Linear(50,1)
+            nn.Linear(params['hidden_size'], 32),
+            nn.Tanh(),
+            nn.Linear(32,1)
         )
     
     def flatten(self,x):
