@@ -135,6 +135,8 @@ class AP_CNN(Model):
         except KeyError:
             self.shared = True
 
+        self.bn = nn.BatchNorm1d(300)
+
         self.convolution_q = SimpleConv(params['emb_dim'],params['qcnn']['conv_size'],params['qcnn']['window'])
         if self.shared:
             self.convolution_a = self.convolution_q
@@ -145,7 +147,6 @@ class AP_CNN(Model):
         self.h_pool = lambda t : self.horizontal_pooling(t)
         self.v_pool = lambda t : self.vertical_pooling(t)
         self.dense = nn.Sequential(
-            nn.BatchNorm1d(2*params['qcnn']['conv_size']),
             nn.Linear(2*params['qcnn']['conv_size'], params['hidden_size']),
             nn.Tanh(),
             nn.Linear(params['hidden_size'], 1)
@@ -156,8 +157,8 @@ class AP_CNN(Model):
     
     def forward(self,inp):
         q,a = inp
-        q_emb = self.embs(q)
-        a_emb = self.embs(a)
+        q_emb = self.bn(self.embs(q))
+        a_emb = self.bn(self.embs(a))
         # q_enc = self.convolution(q_emb)
         # a_enc = self.convolution(a_emb)
         q_enc = self.convolution_q(q_emb)
