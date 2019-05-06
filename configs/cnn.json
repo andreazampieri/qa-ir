@@ -24,10 +24,16 @@
     "seed": 123,
     "patience": 25,
     "batch_size": 50,
-    "optimizer":{
+    "optimizer":[{
         "name":"Adadelta",
         "params":{
             "lr": 0.8
-        }
+        }},
+        [{
+        "name":"Adadelta",
+        "params":{
+            "lr": 0.1
+        }}
+    ]
     }
 }
