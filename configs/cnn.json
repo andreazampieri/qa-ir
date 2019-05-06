@@ -29,11 +29,12 @@
         "params":{
             "lr": 0.8
         }},
-        [{
+        {
         "name":"Adadelta",
         "params":{
             "lr": 0.1
         }}
+    
     ]
-    }
+    
 }
