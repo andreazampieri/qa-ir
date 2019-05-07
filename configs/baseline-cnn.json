@@ -60,7 +60,7 @@
                 "window":5,
                 "activation":"relu"
             }
-        },
+        }
     ]
 
     },
