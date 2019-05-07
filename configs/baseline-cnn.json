@@ -3,7 +3,7 @@
     "train_as":"classifier",
     "parser":"text",
     "model":{
-        "name":"base-cnn",
+        "name":"att-cnn",
         "params":{
             "static_emb": true,
             "hidden_size": 300,
@@ -24,10 +24,16 @@
     "seed": 123,
     "patience": 15,
     "batch_size": 50,
-    "optimizer":{
+    "optimizer":[{
         "name":"Adam",
         "params":{
             "lr":0.002
         }
+    },{
+        "name":"Adadelta",
+        "params":{
+            "lr":0.1
+        }
     }
+    ]
 }

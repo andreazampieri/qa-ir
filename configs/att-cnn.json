@@ -3,7 +3,7 @@
     "train_as":"classifier",
     "parser":"text",
     "model":{
-        "name":"att-cnn",
+        "name":"test-att-cnn",
         "params":{
             "static_emb": true,
             "hidden_size": 65,
