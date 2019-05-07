@@ -83,10 +83,17 @@ class AttCNN(Model):
         self.embs.weight.data.copy_(torch.from_numpy(vocab.weights))
         if 'static_emb' in params and params['static_emb']:
             self.embs.weight.requires_grad = False
-
+    '''
     def horizontal_pooling(self,t):
         return f.max_pool1d(t,t.size(2)).view(t.size(0),-1)
 
+    def vertical_pooling(self,x):
+        return self.horizontal_pooling(x.transpose(1,2)) 
+    '''
+
+    def horizontal_pooling(self,x):
+        return f.max_pool1d(x,x.size(2))
+  
     def vertical_pooling(self,x):
         return self.horizontal_pooling(x.transpose(1,2)) 
 
