@@ -9,12 +9,12 @@
             "hidden_size": 300,
             "pad_idx":0,
             "qcnn":{
-                "conv_size": 4000,
+                "conv_size": 1000,
                 "window":5,
                 "activation":"tanh"
             },
             "acnn":{
-                "conv_size": 4000,
+                "conv_size": 1000,
                 "window":5,
                 "activation":"tanh"
             }
@@ -22,7 +22,7 @@
 
     },
     "seed": 123,
-    "patience": 15,
+    "patience": 4,
     "batch_size": 50,
     "optimizer":[{
         "name":"Adam",
