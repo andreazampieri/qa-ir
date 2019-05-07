@@ -4,7 +4,7 @@
     "parser":"text",
     "model":{
         "name":"att-cnn",
-        "params":{
+        "params":[{
             "static_emb": true,
             "hidden_size": 300,
             "pad_idx":0,
@@ -18,18 +18,56 @@
                 "window":5,
                 "activation":"tanh"
             }
-        }
+        },{
+            "static_emb": true,
+            "hidden_size": 300,
+            "pad_idx":0,
+            "qcnn":{
+                "conv_size": 500,
+                "window":5,
+                "activation":"relu"
+            },
+            "acnn":{
+                "conv_size": 500,
+                "window":5,
+                "activation":"relu"
+            }
+        },{
+            "static_emb": true,
+            "hidden_size": 300,
+            "pad_idx":0,
+            "qcnn":{
+                "conv_size": 750,
+                "window":5,
+                "activation":"tanh"
+            },
+            "acnn":{
+                "conv_size": 750,
+                "window":5,
+                "activation":"tanh"
+            }
+        },{
+            "static_emb": true,
+            "hidden_size": 300,
+            "pad_idx":0,
+            "qcnn":{
+                "conv_size": 750,
+                "window":5,
+                "activation":"relu"
+            },
+            "acnn":{
+                "conv_size": 750,
+                "window":5,
+                "activation":"relu"
+            }
+        },
+    ]
 
     },
     "seed": 123,
     "patience": 4,
     "batch_size": 50,
     "optimizer":[{
-        "name":"Adam",
-        "params":{
-            "lr":0.002
-        }
-    },{
         "name":"Adadelta",
         "params":{
             "lr":0.1
