@@ -9,12 +9,12 @@
             "hidden_size": 300,
             "pad_idx":0,
             "qcnn":{
-                "conv_size": 1000,
+                "conv_size": 500,
                 "window":5,
                 "activation":"tanh"
             },
             "acnn":{
-                "conv_size": 1000,
+                "conv_size": 500,
                 "window":5,
                 "activation":"tanh"
             }
