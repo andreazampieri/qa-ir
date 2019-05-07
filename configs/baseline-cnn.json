@@ -9,40 +9,12 @@
             "hidden_size": 300,
             "pad_idx":0,
             "qcnn":{
-                "conv_size": 500,
+                "conv_size": 1000,
                 "window":5,
                 "activation":"tanh"
             },
             "acnn":{
-                "conv_size": 500,
-                "window":5,
-                "activation":"tanh"
-            }
-        },{
-            "static_emb": true,
-            "hidden_size": 300,
-            "pad_idx":0,
-            "qcnn":{
-                "conv_size": 500,
-                "window":5,
-                "activation":"relu"
-            },
-            "acnn":{
-                "conv_size": 500,
-                "window":5,
-                "activation":"relu"
-            }
-        },{
-            "static_emb": true,
-            "hidden_size": 300,
-            "pad_idx":0,
-            "qcnn":{
-                "conv_size": 750,
-                "window":5,
-                "activation":"tanh"
-            },
-            "acnn":{
-                "conv_size": 750,
+                "conv_size": 1000,
                 "window":5,
                 "activation":"tanh"
             }
@@ -51,12 +23,40 @@
             "hidden_size": 300,
             "pad_idx":0,
             "qcnn":{
-                "conv_size": 750,
+                "conv_size": 1000,
                 "window":5,
                 "activation":"relu"
             },
             "acnn":{
+                "conv_size": 1000,
+                "window":5,
+                "activation":"relu"
+            }
+        },{
+            "static_emb": true,
+            "hidden_size": 300,
+            "pad_idx":0,
+            "qcnn":{
                 "conv_size": 750,
+                "window":5,
+                "activation":"tanh"
+            },
+            "acnn":{
+                "conv_size": 750,
+                "window":5,
+                "activation":"tanh"
+            }
+        },{
+            "static_emb": true,
+            "hidden_size": 300,
+            "pad_idx":0,
+            "qcnn":{
+                "conv_size": 1200,
+                "window":5,
+                "activation":"relu"
+            },
+            "acnn":{
+                "conv_size": 1200,
                 "window":5,
                 "activation":"relu"
             }
