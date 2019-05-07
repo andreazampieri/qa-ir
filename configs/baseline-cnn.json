@@ -10,12 +10,12 @@
             "pad_idx":0,
             "qcnn":{
                 "conv_size": 4000,
-                "window":[5],
+                "window":5,
                 "activation":"tanh"
             },
             "acnn":{
                 "conv_size": 4000,
-                "window":[5],
+                "window":5,
                 "activation":"tanh"
             }
         }
